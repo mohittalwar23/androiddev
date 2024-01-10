@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingImage(message = "Happy Birthday Sam!", from = "From Mohit")
+                    PartFirst()
                 }
             }
         }
@@ -42,54 +42,78 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
+fun GreetingText(message: String, modifier: Modifier = Modifier) {
     // Create a column so that texts don't overlap
     Column(
-        verticalArrangement = Arrangement.Center,
         modifier = modifier
     ) {
+
         Text(
             text = message,
-            fontSize = 100.sp,
-            lineHeight = 116.sp,
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = from,
-            fontSize = 36.sp,
+            textAlign = TextAlign.Justify,
+            fontSize = 24.sp,
             modifier = Modifier
                 .padding(16.dp)
                 .align(alignment = Alignment.CenterHorizontally)
         )
     }
 }
-
 @Composable
-fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
-    val image = painterResource(R.drawable.androidparty)
-    Box {
-        Image(
-            painter = image,
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            alpha = 0.5F
-        )
-        GreetingText(
-            message = message,
-            from = from,
+fun GreetingText2(message: String, modifier: Modifier = Modifier) {
+    // Create a column so that texts don't overlap
+    Column(
+        modifier = modifier
+    ) {
+
+        Text(
+            text = message,
+            textAlign = TextAlign.Justify,
+            fontSize = 16.sp,
             modifier = Modifier
-                .fillMaxSize()
-                .padding(8.dp)
+                .padding(16.dp)
         )
     }
-    
-
 }
+
+@Composable
+fun PartFirst(modifier: Modifier = Modifier) {
+    val image = painterResource(R.drawable.bg_compose_background)
+    Column {
+        Box {
+            Image(
+                painter = image,
+                contentDescription = null
+            )
+
+        }
+        Box {
+            GreetingText(message = "Jetpack Compose Tutorial")
+
+        }
+
+        Box {
+            GreetingText2(message = "Jetpack Compose is a modern toolkit for building native Android UI. Compose simplifies and accelerates UI development on Android with less code, powerful tools, and intuitive Kotlin APIs.")
+
+        }
+
+        Box {
+            GreetingText2(message = "In this tutorial, you build a simple UI component with declarative functions. You call Compose functions to say what elements you want and the Compose compiler does the rest. Compose is built around Composable functions. These functions let you define your app\\'s UI programmatically because they let you describe how it should look and provide data dependencies, rather than focus on the process of the UI\\'s construction, such as initializing an element and then attaching it to a parent. To create a Composable function, you add the @Composable annotation to the function name.")
+
+        }
+
+
+
+
+
+
+    }
+}
+
 
 @Preview(showBackground = false, showSystemUi = true)
 @Composable
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        GreetingImage(message = "Happy Birthday Sam!", from ="From Mohit")
+        PartFirst()
     }
 }
