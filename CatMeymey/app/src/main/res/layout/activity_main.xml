@@ -6,22 +6,63 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="660dp"
-        android:fontFamily="casual"
-        android:shadowRadius="50"
-        android:text="CAT MEYMEYS"
-        android:textColor="#E10B0B"
-        android:textColorHighlight="#E1DADA"
-        android:textSize="34sp"
-        android:textStyle="bold"
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="470dp"
+        android:layout_height="813dp"
+        android:layout_weight="1"
+        android:alpha="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:srcCompat="@drawable/bg_meme" />
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:height="50dp"
+            android:background="#F8DF06"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:letterSpacing="0.75"
+            android:text="CAT MEYMEY"
+            android:textAlignment="gravity"
+            android:textColor="#E60000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            app:srcCompat="@drawable/happy" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="199dp"
+            app:srcCompat="@drawable/maxwell" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="194dp"
+            app:srcCompat="@drawable/banana_after" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="171dp"
+            app:srcCompat="@drawable/chippi" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
