@@ -3,6 +3,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tipcalculator.databinding.ActivityMainBinding
 import java.text.NumberFormat
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculateTip() {
-        val stringInTextField = binding.costOfService.text.toString()
+        val stringInTextField = binding.costOfService.editText?.text.toString()
         val cost = stringInTextField.toDoubleOrNull()
         if (cost == null) {
             binding.tipResult.text = ""
@@ -35,8 +36,8 @@ class MainActivity : AppCompatActivity() {
         if (binding.roundUpSwitch.isChecked) {
             tip = kotlin.math.ceil(tip)
         }
-
-        val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
+        val currencyFormat = NumberFormat.getCurrencyInstance(Locale("en", "IN"))
+        val formattedTip = currencyFormat.format(tip)
         binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
     }
 }
