@@ -1,4 +1,5 @@
 package com.example.tipcalculator
+
 import android.content.Context
 import android.os.Bundle
 import android.view.KeyEvent
@@ -18,9 +19,15 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.calculateButton.setOnClickListener { calculateTip() }
-        binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode)
+
+        // Set a listener on the radio group to enable/disable the customPercent EditText
+        binding.tipOptions.setOnCheckedChangeListener { _, checkedId ->
+            val isCustomTipSelected = checkedId == R.id.custom
+            binding.customPercent.editText?.isEnabled = isCustomTipSelected
         }
+
+        binding.calculateButton.setOnClickListener { calculateTip() }
+        binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode) }
     }
 
     private fun calculateTip() {
