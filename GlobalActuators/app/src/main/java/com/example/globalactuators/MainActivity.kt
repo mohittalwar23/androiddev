@@ -14,7 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     private val database = FirebaseDatabase.getInstance().reference
     private val ledStateRef = database.child("led_state")
+    private val dataStateRef = database.child("data_state")
     private lateinit var stateTextView: TextView
+    private lateinit var dataTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,13 +24,14 @@ class MainActivity : AppCompatActivity() {
 
         val toggleButton = findViewById<ImageButton>(R.id.imageButton)
         stateTextView = findViewById(R.id.stateTextView)
-
+        dataTextView = findViewById(R.id.dataTextView)
         toggleButton.setOnClickListener {
             toggleLEDState()
         }
 
         // Read initial LED state
         readLEDState()
+        readDATAState()
     }
 
     private fun toggleLEDState() {
@@ -61,4 +64,20 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+    private fun readDATAState() {
+        dataStateRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val currentState = dataSnapshot.getValue(Float::class.java)
+                currentState?.let {
+                    dataTextView.text = "Data in cms : $it"
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle errors
+                Log.e("Firebase", "Failed to read data state.", databaseError.toException())
+            }
+        })
+    }
+
 }
