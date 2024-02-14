@@ -1,68 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorPrimaryVariant"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/headerTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:fontFamily="@font/luckiest_guy"
+        android:gravity="center"
+        android:padding="5dp"
+        android:background="?attr/colorPrimaryVariant"
+        android:text="@string/cat_memes"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="40sp" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="470dp"
-        android:layout_height="813dp"
-        android:layout_weight="1"
-        android:alpha="0.5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg_meme" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_below="@id/headerTextView"
+        android:padding="8dp" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:height="50dp"
-            android:background="#F8DF06"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:letterSpacing="0.75"
-            android:text="CAT MEYMEY"
-            android:textAlignment="gravity"
-            android:textColor="#E60000"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            app:srcCompat="@drawable/happy" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="199dp"
-            app:srcCompat="@drawable/maxwell" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="match_parent"
-            android:layout_height="194dp"
-            app:srcCompat="@drawable/banana_after" />
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="match_parent"
-            android:layout_height="171dp"
-            app:srcCompat="@drawable/chippi" />
-
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

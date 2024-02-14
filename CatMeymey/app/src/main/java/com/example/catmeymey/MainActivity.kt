@@ -1,52 +1,25 @@
 package com.example.catmeymey
 
-import android.annotation.SuppressLint
-import android.media.MediaPlayer
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.catmeymey.adapter.CatCardAdapter
 
 class MainActivity : AppCompatActivity() {
-    private var happySong: MediaPlayer? = null
-    private var happyImage: ImageView? = null
 
-    private var maxwellSong: MediaPlayer? = null
-    private var maxwellImage: ImageView? = null
-
-    private var bananaSong: MediaPlayer? = null
-    private var bananaImage: ImageView? = null
-
-    private var chippiSong: MediaPlayer? = null
-    private var chippiImage: ImageView? = null
-
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        happyImage = findViewById(R.id.imageView2) // Correct ID
-        happySong = MediaPlayer.create(this, R.raw.happy)
+        // Get the RecyclerView from the layout
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
 
-        happyImage!!.setOnClickListener {
-            happySong?.start() // Use safe call operator to avoid NullPointerException
-        }
-        maxwellImage = findViewById(R.id.imageView3) // Correct ID
-        maxwellSong = MediaPlayer.create(this, R.raw.maxwell)
+        // Create an instance of the CatCardAdapter and set it on the RecyclerView
+        val catCardAdapter = CatCardAdapter(this, R.layout.vertical)
+        recyclerView.adapter = catCardAdapter
 
-        maxwellImage!!.setOnClickListener {
-            maxwellSong?.start() // Use safe call operator to avoid NullPointerException
-        }
-        bananaImage = findViewById(R.id.imageView4) // Correct ID
-        bananaSong = MediaPlayer.create(this, R.raw.banana)
-
-        bananaImage!!.setOnClickListener {
-            bananaSong?.start() // Use safe call operator to avoid NullPointerException
-        }
-        chippiImage = findViewById(R.id.imageView5) // Correct ID
-        chippiSong = MediaPlayer.create(this, R.raw.chippi)
-
-        chippiImage!!.setOnClickListener {
-            chippiSong?.start() // Use safe call operator to avoid NullPointerException
-        }
+        // Set a LinearLayoutManager on the RecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(this)
     }
 }
